@@ -1,6 +1,9 @@
 ARG MAVEN_TAG=3.8.7-openjdk-18-slim
 FROM docker.io/library/maven:${MAVEN_TAG}
-LABEL org.opencontainers.image.description "CICFlowmeter is an Ethernet traffic Bi-flow generator and analyzer for anomaly detection."
+
+LABEL org.opencontainers.image.source="https://github.com/TheLurps/CICFlowMeter"
+LABEL org.opencontainers.image.description="CICFlowmeter is an Ethernet traffic Bi-flow generator and analyzer for anomaly detection."
+LABEL org.opencontainers.image.licenses="MIT"
 
 # Install libpcap headers
 ARG DEBIAN_FRONTEND=noninteractive
