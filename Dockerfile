@@ -1,5 +1,6 @@
 ARG MAVEN_TAG=3.8.7-openjdk-18-slim
 FROM docker.io/library/maven:${MAVEN_TAG}
+LABEL org.opencontainers.image.description "CICFlowmeter is an Ethernet traffic Bi-flow generator and analyzer for anomaly detection."
 
 # Install libpcap headers
 ARG DEBIAN_FRONTEND=noninteractive
@@ -28,7 +29,7 @@ RUN mvn install:install-file \
 RUN mvn package -DskipTests
 
 # Run the app
-ENV LD_LIBRARY_PATH /app/jnetpcap/
+ENV LD_LIBRARY_PATH=/app/jnetpcap/
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
