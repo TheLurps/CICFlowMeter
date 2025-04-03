@@ -47,3 +47,20 @@ At the project root
 mvn package
 ```
 the jar file will be in the pathtoproject/CICFlowMeter/target
+
+## Container image
+
+- build with podman
+
+```
+podman build -t cicflowmeter .
+```
+
+- run with podman
+
+```
+podman run --rm \
+    -v $PCAP_DIR:/pcap:Z \
+    -v $OUTPUT_DIR:/output:Z \
+    localhost/cicflowmeter /pcap/testing.pcap /output
+```
